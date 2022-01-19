@@ -23,6 +23,7 @@ h1 {
     margin-left: 100px;
 }
 
+/* Photographer Proper Page */
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -52,4 +53,22 @@ h1 {
     border-radius: 50%;
     height: 225px;
     width: 225px;
+}
+
+.photograph-header div img {
+    height : 135px;
+    width: 135px;
+    border-radius: 50%;
+}
+
+.photographer_info div img, .photographer_info div video  {
+    height: 290px;
+    width: 290px;
+}
+
+.photographer_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em 100px;
+    margin: 75px 100px;
 }

@@ -25,7 +25,6 @@ export function photographerFactory(data) {
         article.appendChild (my2p);
         article.addEventListener ('click', function(){
             window.localStorage.setItem('currentPhotographer', JSON.stringify(data))
-            window.currentPhotographer = data;
             window.location.href = "photographer.html";
         })
         return (article);
