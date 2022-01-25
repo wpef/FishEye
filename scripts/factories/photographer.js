@@ -7,7 +7,6 @@ export function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        article.href = "photographer.html?id=${photographer.id}";
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
