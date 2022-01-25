@@ -14,7 +14,7 @@ async function displayMediasData(photographer) {
       mediaSection.appendChild(userCardDOM);
     })
 };
-
+ 
 function getNickname(str) {
    const strArray = str.split(" ");
    strArray.forEach(function(entry) {
@@ -106,8 +106,16 @@ function getPhotographerDom (data){
 }
 
 function init() {
+  //@TODO : getParams ici , doit récupérer ce qui se trouve après le /?id=
   const currentPhotographer = JSON.parse (window.localStorage.getItem('currentPhotographer'))
   displayPhotographerData(currentPhotographer)
   displayMediasData(currentPhotographer)
 }
 init()
+
+//const queryString = window.location.search; // "?id=243"
+//const searchParams = new URLSearchParams(queryString); // => id 
+
+//const photographerId = searchParams.get('id'); // ==> 243
+
+//const photographer = photographers.find(photographer => photographer.id

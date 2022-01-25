@@ -1,15 +1,15 @@
 
 
 export function photographerFactory(data) {
-    const { name, portrait, tagline, city, country, price } = data;
+    const { name, portrait, tagline, city, country, price, id } = data;
 
     const picture = `Sample Photos/Photographers ID Photos/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        article.href = "photographer.html";
+        article.href = "photographer.html?id=${photographer.id}";
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const h3 = document.createElement('h3');
@@ -24,8 +24,8 @@ export function photographerFactory(data) {
         article.appendChild (my1p);
         article.appendChild (my2p);
         article.addEventListener ('click', function(){
-            window.localStorage.setItem('currentPhotographer', JSON.stringify(data))
-            window.location.href = "photographer.html";
+            window.localStorage.setItem('currentPhotographer', JSON.stringify(data));
+            window.location.href = "photographer.html?id=" + id;
         })
         return (article);
     }
