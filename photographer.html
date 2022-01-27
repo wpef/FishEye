@@ -24,9 +24,44 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
+			
+        <form>
+          <div
+          class="formData" data-error-visible="false">
+          <label for="first">Prénom</label><br>
+          <input
+            class="text-control"
+            type="text"
+            id="first"
+            name="first"
+            minlength="2"
+            required     
+          /><br>
+        </div>
+        <div
+        class="formData" data-error-visible="false">
+        <label for="last">Nom</label><br>
+          <input
+            class="text-control"
+            type="text"
+            id="last"
+            name="last"  
+            minlength="2"
+            required     
+          /><br>
+        </div>
+        <div
+        class="formData" data-error-visible="false">
+        <label for="email">E-mail</label><br>
+          <input
+            class="text-control"
+            type="email"
+            id="email"
+            name="email"
+            required pattern= "^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+          /><br>
+        </div>
+						<label>Votre Zessage</label>
 						<input />
 					</div>
           <button class="contact_button">Envoyer</button>

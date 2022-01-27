@@ -107,10 +107,19 @@ function getPhotographerDom (data){
 
 function init() {
   //@TODO : getParams ici , doit récupérer ce qui se trouve après le /?id=
-  const currentPhotographer = JSON.parse (window.localStorage.getItem('currentPhotographer'))
-  displayPhotographerData(currentPhotographer)
-  displayMediasData(currentPhotographer)
-}
+  const queryString = window.location.search;
+  const searchParams = new URLSearchParams (queryString);
+  const photographers = fetch('../../data/photographers.json')
+        .then(res => res.json())
+        .then(data => {
+          const pageId = searchParams.get ('id');
+          console.log(pageId);
+          const photographer = data.photographers.find(photographer => photographer.id == pageId);
+          console.log(photographer);
+          displayPhotographerData(photographer)
+          displayMediasData(photographer)
+        });
+        }
 init()
 
 //const queryString = window.location.search; // "?id=243"

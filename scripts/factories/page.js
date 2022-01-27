@@ -7,13 +7,3 @@ const photographer = photographers.find(photographer => photographer.id === phot
 
 document.getElementById("name").innerText = photographer.name;//
 
-async function init() {
-    // Récupère les datas des photographes
-    const { photographers  } = await getPhotographers();
-    photographers.forEach((photographers) => {
-      // Pour chaque média, on cherche l'id du photographe qui est égale a  media.photographerId 
-      if(photographers.find(x => x.id === photographers.id)) {  
-    }
-    displayData(photographers);
-};)
-init();

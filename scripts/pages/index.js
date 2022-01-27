@@ -25,6 +25,13 @@
     async function init() {
         // Récupère les datas des photographes
         const { photographers, media  } = await getPhotographers();
+        const queryString = window.location.search; // "?id=243"
+        const searchParams = new URLSearchParams(queryString); // => id 
+
+        const photographerId = searchParams.get('id'); // ==> 243
+        console.log('the rrrr : ', photographerId);
+        const photographer = photographers.find(photographer => photographer.id === photographerId) // le même id que celui qui a été envoyé dans l'URL;
+
         media.forEach((media) => {
           // Pour chaque média, on cherche l'id du photographe qui est égale a  media.photographerId 
           if(photographers.find(x => x.id === media.photographerId)) {

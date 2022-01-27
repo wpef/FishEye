@@ -23,7 +23,6 @@ export function photographerFactory(data) {
         article.appendChild (my1p);
         article.appendChild (my2p);
         article.addEventListener ('click', function(){
-            window.localStorage.setItem('currentPhotographer', JSON.stringify(data));
             window.location.href = "photographer.html?id=" + id;
         })
         return (article);
