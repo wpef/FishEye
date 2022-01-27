@@ -114,10 +114,12 @@ function init() {
         .then(data => {
           const pageId = searchParams.get ('id');
           console.log(pageId);
+          const photographerDetails = data.media.filter(media => media.photographerId == pageId); 
+          console.log(photographerDetails);
           const photographer = data.photographers.find(photographer => photographer.id == pageId);
           console.log(photographer);
           displayPhotographerData(photographer)
-          displayMediasData(photographer)
+          displayMediasData(photographerDetails)
         });
         }
 init()
