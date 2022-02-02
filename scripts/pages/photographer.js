@@ -6,10 +6,10 @@ async function displayPhotographerData(photographer) {
   photographerSection.appendChild(userCardDOM);
 };
 
-async function displayMediasData(photographerDetails) {
+async function displayMediasData(photographerDetails, photographer) {
   console.log('shouf', photographerDetails)
   const mediaSection = document.querySelector(".photographer_info");
-      const mediaModel = getMediaDom(photographerDetails);
+      const mediaModel = getMediaDom(photographerDetails, photographer);
       const userCardDOM = mediaModel.getUserCardDOM();
       mediaSection.appendChild(userCardDOM);
 };
@@ -22,41 +22,55 @@ function getNickname(str) {
   return strArray[0]
 } ;
 
-function getMediaDom (photographerDetails, photographer){
-  console.log('getmediadom', photographerDetails)
-  const {image, video, likes, title, photographerId} = photographerDetails
-  const picture = `Sample Photos/${photographerId}/${image ? image : video}`;
-  console.log('name', photographerId)
+function getMediaDom (photographerMedia, photographer){
+    
   function getUserCardDOM() {
-    const mediaCard = document.createElement( 'div' );
-    let media;
-    // Différenciation du DOM si c'est une image ou une vidéo
-    if(image) {
-      const img = document.createElement( 'img' );
-      img.setAttribute("src", picture)
-      media = img
-    } else if(video){
-      const video = document.createElement( 'video' );
-      const source = document.createElement( 'source' );
-      source.setAttribute("src", picture)
-      source.setAttribute("type", "video/mp4")
-      // faire un onclick . Ca marche pas
-      video.appendChild(source);
-      video.addEventListener ('click', function(){
-        source.setAttribute("play", true)
-        media = video
-    })
-    }
-    // génère les autres éléments du DOM
-    const h2 = document.createElement( 'h2' );
-    h2.textContent = title;
-    const h3 = document.createElement( 'h3' );
-    h3.textContent = likes + ' personnes ont kiffé';
-    mediaCard.appendChild(media);
-    mediaCard.appendChild(h2);
-    mediaCard.appendChild(h3);
+    const mediaCardContainer = document.createElement( 'div' );
+    console.log('photographer details =',photographer);
 
-    return (mediaCard)
+    for(var i = 0; i <= photographerMedia.length - 1; i++) {  
+      const elmt = photographerMedia[i]
+      const {name, likes, title, photographerId} = elmt
+      console.log('one photographer media', photographerMedia[i]);
+
+      const picture = `Sample Photos/${getNickname(photographer.name)}/${elmt.image ? elmt.image : elmt.video}`;
+
+      const mediaCard = document.createElement( 'div' );
+      let media;
+      // Différenciation du DOM si c'est une image ou une vidéo
+      console.log('before',elmt )
+      if(elmt.image) {              
+        console.log('1')
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture)
+        media = img
+      } else if(elmt.video){
+        console.log('2')
+        const video = document.createElement( 'video' );
+        const source = document.createElement( 'source' );
+        source.setAttribute("src", picture)
+        source.setAttribute("type", "video/mp4")
+        console.log('source value is', source)
+        media = video
+
+        video.appendChild(source);
+        video.addEventListener ('click', function(){
+          source.setAttribute("play", true)
+      })
+      }
+      // génère les autres éléments du DOM
+      const h2 = document.createElement( 'h2' );
+      h2.textContent = title;
+      const h3 = document.createElement( 'h3' );
+      h3.textContent = likes + ' personnes ont kiffé';
+      mediaCard.appendChild(h2);
+      mediaCard.appendChild(media);
+      mediaCard.appendChild(h3);
+      mediaCardContainer.appendChild(mediaCard);
+
+    }
+
+    return (mediaCardContainer)
   }
   return { getUserCardDOM }
 
@@ -122,7 +136,7 @@ function init() {
           const photographer = data.photographers.find(photographer => photographer.id == pageId);
           console.log(photographer);
           displayPhotographerData(photographer)
-          displayMediasData(photographerDetails)
+          displayMediasData(photographerDetails, photographer)
         });
       }
   init();
