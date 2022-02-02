@@ -6,13 +6,12 @@ async function displayPhotographerData(photographer) {
   photographerSection.appendChild(userCardDOM);
 };
 
-async function displayMediasData(photographer) {
+async function displayMediasData(photographerDetails) {
+  console.log('shouf', photographerDetails)
   const mediaSection = document.querySelector(".photographer_info");
-    photographer.medias.forEach((media) => {
-      const mediaModel = getMediaDom(media, photographer.name);
+      const mediaModel = getMediaDom(photographerDetails);
       const userCardDOM = mediaModel.getUserCardDOM();
       mediaSection.appendChild(userCardDOM);
-    })
 };
  
 function getNickname(str) {
@@ -23,9 +22,11 @@ function getNickname(str) {
   return strArray[0]
 } ;
 
-function getMediaDom (media, photographerName){
-  const { date, id, image, video, likes, price, title} = media
-  const picture = `Sample Photos/${getNickname(photographerName)}/${image ? image : video}`;
+function getMediaDom (photographerDetails, photographerName){
+  console.log('getmediadom', photographerDetails)
+  const {image, video, likes, title,photographerId} = photographerDetails
+  const picture = `Sample Photos/${photographerId}/${image ? image : video}`;
+  console.log('name', photographerId)
   function getUserCardDOM() {
     const mediaCard = document.createElement( 'div' );
     let media;
@@ -43,8 +44,8 @@ function getMediaDom (media, photographerName){
       video.appendChild(source);
       video.addEventListener ('click', function(){
         source.setAttribute("play", true)
+        media = video
     })
-      media = video
     }
     // génère les autres éléments du DOM
     const h2 = document.createElement( 'h2' );
@@ -60,6 +61,9 @@ function getMediaDom (media, photographerName){
   return { getUserCardDOM }
 
 } ;
+
+//document.getElementById("name").innerText = photographer.name
+
 
 //function getPhotographerLikes(media, photographerLikes){
   //const { date, id, image, video, likes, price, title} = media
@@ -106,7 +110,6 @@ function getPhotographerDom (data){
 }
 
 function init() {
-  //@TODO : getParams ici , doit récupérer ce qui se trouve après le /?id=
   const queryString = window.location.search;
   const searchParams = new URLSearchParams (queryString);
   const photographers = fetch('../../data/photographers.json')
@@ -115,18 +118,11 @@ function init() {
           const pageId = searchParams.get ('id');
           console.log(pageId);
           const photographerDetails = data.media.filter(media => media.photographerId == pageId); 
-          console.log(photographerDetails);
+          console.log('r',photographerDetails);
           const photographer = data.photographers.find(photographer => photographer.id == pageId);
           console.log(photographer);
           displayPhotographerData(photographer)
           displayMediasData(photographerDetails)
         });
-        }
-init()
-
-//const queryString = window.location.search; // "?id=243"
-//const searchParams = new URLSearchParams(queryString); // => id 
-
-//const photographerId = searchParams.get('id'); // ==> 243
-
-//const photographer = photographers.find(photographer => photographer.id
+      }
+  init();
