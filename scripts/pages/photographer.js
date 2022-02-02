@@ -22,9 +22,9 @@ function getNickname(str) {
   return strArray[0]
 } ;
 
-function getMediaDom (photographerDetails, photographerName){
+function getMediaDom (photographerDetails, photographer){
   console.log('getmediadom', photographerDetails)
-  const {image, video, likes, title,photographerId} = photographerDetails
+  const {image, video, likes, title, photographerId} = photographerDetails
   const picture = `Sample Photos/${photographerId}/${image ? image : video}`;
   console.log('name', photographerId)
   function getUserCardDOM() {

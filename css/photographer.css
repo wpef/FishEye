@@ -10,19 +10,35 @@
     margin: 0 100px;
 }
 
+/* photographer header*/
+
+#theDiv{
+    display: flex;
+  }
+  
+.myDiv1 h2{
+    color: #D3573C;
+    font-size: 49px;
+  }
+
+.myDiv1 h3{
+    color: #901C1C;
+  }
+  
 
 .myDiv1 {
+    margin-left: 48px;
     position: relative;
 }
 
 .myDiv2 {
     position: relative;
-    margin-right: 30px;
+    margin-left: 612px;
 }
 
 .contact_button {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 444px;
+    position: absolute;
     font-size: 20px;
     font-weight: bold;
     color: white;
