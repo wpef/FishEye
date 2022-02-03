@@ -26,6 +26,7 @@ function getMediaDom (photographerMedia, photographer){
     
   function getUserCardDOM() {
     const mediaCardContainer = document.createElement( 'div' );
+    mediaCardContainer.setAttribute("class", "container");
     console.log('photographer details =',photographer);
 
     for(var i = 0; i <= photographerMedia.length - 1; i++) {  
@@ -59,14 +60,17 @@ function getMediaDom (photographerMedia, photographer){
       })
       }
       // génère les autres éléments du DOM
+      const divDetails = document.createElement ('div');
+      divDetails.setAttribute("class", "divDetails");
       const h2 = document.createElement( 'h2' );
       h2.textContent = title;
       const h3 = document.createElement( 'h3' );
-      h3.textContent = likes + ' personnes ont kiffé';
-      mediaCard.appendChild(h2);
-      mediaCard.appendChild(media);
-      mediaCard.appendChild(h3);
+      h3.textContent = likes + ' coeur ntm ';
       mediaCardContainer.appendChild(mediaCard);
+      mediaCard.appendChild(media);     
+      mediaCard.appendChild(divDetails);
+      divDetails.appendChild(h2);
+      divDetails.appendChild(h3);
 
     }
 

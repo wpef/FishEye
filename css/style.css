@@ -24,11 +24,22 @@ h1 {
 }
 
 /* Photographer Proper Page */
-.photographer_section {
+.photographer_info .container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
-    margin-top: 45px;
+    gap: 104px;
+    margin-top: 15px;
+}
+
+.divDetails {
+  display: flex;
+}
+
+.photographer_section{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  margin-top: 45px;
 }
 
 .photographer_section article {
