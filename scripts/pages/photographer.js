@@ -59,18 +59,23 @@ function getMediaDom (photographerMedia, photographer){
           source.setAttribute("play", true)
       })
       }
-      // génère les autres éléments du DOM
+      // Generate other DOM elements
       const divDetails = document.createElement ('div');
       divDetails.setAttribute("class", "divDetails");
       const h2 = document.createElement( 'h2' );
       h2.textContent = title;
       const h3 = document.createElement( 'h3' );
-      h3.textContent = likes + ' coeur ntm ';
+      h3.textContent = likes ;
+      const button = document.createElement ('button');
+      button.setAttribute("class", "fas fa-heart fav fav__select");
+      
+      // Need to create a button for the heart and make an iteration inside it
       mediaCardContainer.appendChild(mediaCard);
       mediaCard.appendChild(media);     
       mediaCard.appendChild(divDetails);
       divDetails.appendChild(h2);
       divDetails.appendChild(h3);
+      divDetails.appendChild(button);
 
     }
 
