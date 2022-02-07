@@ -36,6 +36,10 @@
     color: #901C1C;
     margin-bottom: 35px;
 }
+
+.divDetails h3{
+    margin-top: 25px;
+}
   
 .contact_button {
     margin-left: 444px;

@@ -85,6 +85,16 @@ h1 {
     margin: 75px 100px;
 }
 
+button{
+  border: none;
+  color: #ac1717;
+  background-color: none;
+}
+
+.fas{
+  background: none;
+}
+
 /* modal form css*/
 .valid-msg {
     display: none;

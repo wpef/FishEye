@@ -67,7 +67,14 @@ function getMediaDom (photographerMedia, photographer){
       const h3 = document.createElement( 'h3' );
       h3.textContent = likes ;
       const button = document.createElement ('button');
-      button.setAttribute("class", "fas fa-heart fav fav__select");
+      button.setAttribute("class", "fas fa-heart");
+      // Incrementing by one the likes' number when clicked on heart
+      button.addEventListener ('click',function count(){
+        var like = likes
+        like =+ 1
+        h3.textContent = likes + like
+        console.log ('ntm', count())
+      })
       
       // Need to create a button for the heart and make an iteration inside it
       mediaCardContainer.appendChild(mediaCard);
