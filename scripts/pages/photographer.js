@@ -1,3 +1,4 @@
+// Display Photographer Data into the Header of his own page
 async function displayPhotographerData(photographer) {
   console.log('the ,photographer : ', photographer)
   const photographerSection = document.querySelector(".photograph-header");
@@ -5,7 +6,7 @@ async function displayPhotographerData(photographer) {
   const userCardDOM = photographerModel.getUserCardDOM();
   photographerSection.appendChild(userCardDOM);
 };
-
+// Display Each medias of the photographer
 async function displayMediasData(photographerDetails, photographer) {
   console.log('shouf', photographerDetails)
   const mediaSection = document.querySelector(".photographer_info");
@@ -13,7 +14,8 @@ async function displayMediasData(photographerDetails, photographer) {
       const userCardDOM = mediaModel.getUserCardDOM();
       mediaSection.appendChild(userCardDOM);
 };
- 
+
+//Get the Nickname to be able to reach their datas into json
 function getNickname(str) {
    const strArray = str.split(" ");
    strArray.forEach(function(entry) {
@@ -22,6 +24,7 @@ function getNickname(str) {
   return strArray[0]
 } ;
 
+// Get the medias of the photographer to push them into the DOM
 function getMediaDom (photographerMedia, photographer){
     
   function getUserCardDOM() {
@@ -36,9 +39,9 @@ function getMediaDom (photographerMedia, photographer){
 
       const picture = `Sample Photos/${getNickname(photographer.name)}/${elmt.image ? elmt.image : elmt.video}`;
 
-      const mediaCard = document.createElement( 'div' );
-      let media;
-      // Différenciation du DOM si c'est une image ou une vidéo
+      const mediaCard = document.createElement( 'a' );
+      let media;     
+      // Dom Differenciation if image or video
       console.log('before',elmt )
       if(elmt.image) {              
         console.log('1')
@@ -73,10 +76,8 @@ function getMediaDom (photographerMedia, photographer){
         var like = likes
         like =+ 1
         h3.textContent = likes + like
-        console.log ('ntm', count())
       })
-      
-      // Need to create a button for the heart and make an iteration inside it
+
       mediaCardContainer.appendChild(mediaCard);
       mediaCard.appendChild(media);     
       mediaCard.appendChild(divDetails);
@@ -92,21 +93,7 @@ function getMediaDom (photographerMedia, photographer){
 
 } ;
 
-//document.getElementById("name").innerText = photographer.name
-
-
-//function getPhotographerLikes(media, photographerLikes){
-  //const { date, id, image, video, likes, price, title} = media
-  //function getUserCardDOM(){
-   // const likesCard = document.createElement( 'div' );
-  //  const h3 = document.createElement( 'h3' );
-   // h3.textContent = likes + ' personnes ont kiffé';
-    //likesCard.appendChild(h3);
-
-   // return (likesCard)
- // }
-
-
+// Get the datas of all the photographer to push them into the DOM
 
 function getPhotographerDom (data){
   const { name, portrait, tagline, city, country, price, medias } = data;
@@ -138,7 +125,7 @@ function getPhotographerDom (data){
 
   
 }
-
+// Init all datas and display them 
 function init() {
   const queryString = window.location.search;
   const searchParams = new URLSearchParams (queryString);
@@ -156,3 +143,4 @@ function init() {
         });
       }
   init();
+
