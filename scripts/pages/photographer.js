@@ -27,10 +27,17 @@ function getNickname(str) {
 // Get the medias of the photographer to push them into the DOM
 function getMediaDom (photographerMedia, photographer){
     
-  function getUserCardDOM() {
+  function getUserCardDOM(sortType) { //Added 'sortType' value to handle sorting (or not)
     const mediaCardContainer = document.createElement( 'div' );
     mediaCardContainer.setAttribute("class", "container");
     console.log('photographer details =',photographer);
+    
+    switch(sortType) { //Checking sortType
+        case "name" :  //if sort by name
+          console.log("sort by Name requested");
+          photographerMedia.sort( (a,b) => return a.name > b.name; ) ; //re-sorting photographerMedia array by items.name.
+        default: continue;
+    }
 
     for(var i = 0; i <= photographerMedia.length - 1; i++) {  
       const elmt = photographerMedia[i]
