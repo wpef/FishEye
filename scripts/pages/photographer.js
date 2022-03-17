@@ -36,6 +36,12 @@ function getMediaDom (photographerMedia, photographer){
         case "name" :  //if sort by name
           console.log("sort by Name requested");
           photographerMedia.sort( (a,b) => return a.name > b.name; ) ; //re-sorting photographerMedia array by items.name.
+        case "date" :  //if sort by name
+          console.log("sort by Date requested");
+          photographerMedia.sort( (a,b) => return a.date > b.date; ) ; //re-sorting photographerMedia array by items.date.
+        case "likes" :  //if sort by name
+          console.log("sort by Likes requested");
+          photographerMedia.sort( (a,b) => return a.likes > b.likes; ) ; //re-sorting photographerMedia array by items.likes.
         default: continue;
     }
 
